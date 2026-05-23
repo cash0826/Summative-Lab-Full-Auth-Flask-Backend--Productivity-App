@@ -8,6 +8,7 @@ from flask_bcrypt import Bcrypt
 def create_app(config_class=Config):
   app = Flask(__name__)
   app.config.from_object(config_class)
+  app.json.compact = False
   
   db = SQLAlchemy()
   migrate = Migrate(app, db)
