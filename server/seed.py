@@ -36,7 +36,7 @@ with app.app_context():
   for i in range(50):
     
     entry = Entry(
-      date=fake.date(),
+      date=fake.date_object(),
       first_line=fake.sentence(),
       mood='',
       text=''
