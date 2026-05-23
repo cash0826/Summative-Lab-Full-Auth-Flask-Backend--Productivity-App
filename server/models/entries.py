@@ -1,6 +1,6 @@
-from app import db
+from config import db
 from marshmallow import Schema, fields
-from users import UserSchema
+from .users import UserSchema
 
 class Entry(db.Model):
   __tablename__ = "entries"

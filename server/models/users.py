@@ -1,9 +1,9 @@
-from app import db, bcrypt
+from config import db, bcrypt
 from datetime import datetime
 from sqlalchemy.ext.hybrid import hybrid_property
 from sqlalchemy.orm import validates
 from marshmallow import Schema, fields
-from entries import EntrySchema
+from .entries import EntrySchema
 
 class User(db.Model):
   __tablename__= "users"
