@@ -1,6 +1,6 @@
 from random import randint, choice as rc
 from faker import Faker
-from app import app, db
+from config import app, db
 
 from models import User, Entry
 
@@ -47,5 +47,5 @@ with app.app_context():
   
   db.session.add_all(entries)
   db.session.commit()
-  print("🌱Database Seeded Successfully.")
+  print("🌱 Database Seeded Successfully!")
   
