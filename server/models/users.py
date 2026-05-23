@@ -3,7 +3,6 @@ from datetime import datetime
 from sqlalchemy.ext.hybrid import hybrid_property
 from sqlalchemy.orm import validates
 from marshmallow import Schema, fields
-from .entries import EntrySchema
 
 class User(db.Model):
   __tablename__= "users"
@@ -24,6 +23,7 @@ class User(db.Model):
       raise ValueError("Email too long.")
     if '@' not in address:
       raise ValueError("Email must have a '@' in the address.")
+    return address
   
   # Validate Password and Password Properties
   @hybrid_property
@@ -44,4 +44,4 @@ class UserSchema(Schema):
   id = fields.Int()
   username = fields.String()
   
-  entries = fields.List(fields.Nested(lambda: EntrySchema(exclude=("user",))))
+  entries = fields.List(fields.Nested("EntrySchema", exclude=("user",)))

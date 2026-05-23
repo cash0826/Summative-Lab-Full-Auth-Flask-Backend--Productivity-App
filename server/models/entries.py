@@ -1,6 +1,5 @@
 from config import db
 from marshmallow import Schema, fields
-from .users import UserSchema
 
 class Entry(db.Model):
   __tablename__ = "entries"
@@ -20,9 +19,10 @@ class Entry(db.Model):
   user = db.relationship('User', back_populates='entries')
   
 class EntrySchema(Schema):
-  id = fields.Int
+  id = fields.Int()
   date = fields.Date(format="%Y-%m-%d")
-  first_line = fields.Str(load_default='Empty Entry', dump_default="Empty Entry")
+  first_line = fields.Str()
   mood = fields.Str(load_default="Reflective", dump_default="Reflective")
+  text = fields.Str(load_default='Empty Entry', dump_default="Empty Entry")
   
-  user = fields.Nest(UserSchema(exclude=("entries",)))
+  user = fields.Nested("UserSchema", exclude=("entries",))

@@ -1,4 +1,5 @@
 from config import app, db, api
+import models
 
 # Resources / Controllers
 # Users
