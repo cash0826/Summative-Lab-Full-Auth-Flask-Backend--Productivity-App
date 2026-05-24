@@ -1,6 +1,15 @@
 # Summative-Lab-Flask-SQLAlchemy-Workout-Application-Backend
 This lab will follow a one-to-many relationship type, since users can be associated to many journal entries
 
+## Foreword
+The front end was altered and developed enough to display Login, Signup and EntriesList.
+It does <u>not</u> currently have a flow to complete NewEntries and Updating a Journal Entry
+Additionally, I would have liked to include a profile image in the NavBar
+
+The backend is fully operational with a secure API that supports User Authentication and full CRUD operations
+The Entries routes are protected so only users can access their own data
+The Entries routes were tested with Postman (after sending a successful POST request to '/login')
+
 ## Installation
 
 Run `pipenv install` to create your virtual environment and install dependencies. 
@@ -37,7 +46,7 @@ Run React in another terminal from the project root directory with:
 npm start --prefix client-with-sessions
 ```
 
-# API Endpoints
+## API Endpoints
 
 Authentication:
 * GET /check_session
@@ -47,7 +56,9 @@ Authentication:
 * DELETE /clear_session
 
 Protected sources:
-* GET /<resource>
+* GET /<resource> (with pagination)
 * POST /<resource>
 * PATCH /<resource>/<id>
 * DELETE /<resource>/<id>
+
+
