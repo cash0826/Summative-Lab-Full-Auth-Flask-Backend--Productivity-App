@@ -34,12 +34,14 @@ with app.app_context():
   print("Creating journal entries...")
   entries = []
   for i in range(50):
+    mood = rc(['happy', 'sad', 'angry', 'anxious', 'excited', 'content'])
+    text = fake.paragraph(nb_sentences=randint(3, 10))
     
     entry = Entry(
       date=fake.date_object(),
       first_line=fake.sentence(),
-      mood='',
-      text=''
+      mood=mood,
+      text=text
     )
     
     entry.user = rc(seeded_users)

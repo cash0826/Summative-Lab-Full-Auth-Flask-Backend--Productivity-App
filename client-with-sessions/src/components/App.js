@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
 import NavBar from "./NavBar";
 import Login from "../pages/Login";
+import { Switch, Route } from "react-router-dom";
+import EntriesList from "../pages/EntriesList";
+import NewEntry from "../pages/NewEntry";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -19,7 +22,14 @@ function App() {
     <>
       <NavBar user={user} setUser={setUser} />
       <main>
-        <p>You are logged in!</p>
+        <Switch>
+          <Route path="/new">
+            <NewEntry user={user} />
+          </Route>
+          <Route path="/">
+            <EntriesList />
+          </Route>
+        </Switch>
       </main>
     </>
   );
