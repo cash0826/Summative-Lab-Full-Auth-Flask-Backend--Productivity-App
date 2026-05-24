@@ -11,11 +11,11 @@ def check_if_logged_in():
     return {'error': '401 Unauthorized'}, 401
 
 # Resources / Controllers
-api.add_resource(Signup, '/signup')
-api.add_resource(CheckSession, '/check_session')
-api.add_resource(Login, '/login')
-api.add_resource(Logout, '/logout')
-api.add_resource(Entries, '/entries')
+api.add_resource(Signup, '/signup', endpoint='signup')
+api.add_resource(CheckSession, '/check_session', endpoint='check_session')
+api.add_resource(Login, '/login', endpoint='login')
+api.add_resource(Logout, '/logout', endpoint='logout')
+api.add_resource(Entries, '/entries', '/entries/<int:id>', endpoint='entries')
 
 if __name__ == "__main__":
   app.run(debug=True, port=5555)

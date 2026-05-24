@@ -10,7 +10,7 @@ function EntriesList() {
   useEffect(() => {
     fetch("/entries")
       .then((r) => r.json())
-      .then(setEntries);
+      .then((data) => setEntries(data.items || []));
   }, []);
 
   return (
@@ -20,6 +20,7 @@ function EntriesList() {
           <Entry key={entry.id}>
             <Box>
               <h2>{entry.first_line}</h2>
+              <p>{entry.mood}</p>
               <p>{entry.date}</p>
               <ReactMarkdown>{entry.text}</ReactMarkdown>
             </Box>

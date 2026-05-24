@@ -4,13 +4,25 @@ from flask_restful import Resource
 from flask import request, session
 from models.entries import Entry, EntrySchema
 
+# global variable to help with memory
+entry_schema = EntrySchema()
+
 # Entries GET / POST / PATCH / DELETE
 class Entries(Resource):
   
   # GET /entries
   def get(self):
-    entries = Entry.query.filter_by(user_id=session['user_id']).all()
-    return EntrySchema(many=True).dump(entries), 200
+    # Adding Pagination
+    page = request.args.get('page', 1, type=int)
+    per_page = request.args.get('per_page', 5, type=int)
+    entries = Entry.query.filter_by(user_id=session['user_id']).paginate(page=page, per_page=per_page, error_out=False)
+    return {
+      "pages": entries.pages,
+      "per_page": entries.per_page,
+      "total": entries.total,
+      "total_pages": entries.pages,
+      "items": [entry_schema.dump(entry) for entry in entries.items]
+    }
   
   # POST /entries
   def post(self):
@@ -29,7 +41,7 @@ class Entries(Resource):
       db.session.add(entry)
       db.session.commit()
       
-      return EntrySchema().dump(entry), 201
+      return entry_schema.dump(entry), 201
     except IntegrityError:
       return {'error': '422 Unprocessable Entity'}, 422
     
@@ -45,7 +57,7 @@ class Entries(Resource):
       
       db.session.commit()
       
-      return EntrySchema().dump(entry), 200
+      return entry_schema.dump(entry), 200
     else:
       return {'error': '404 Not Found'}, 404
   
