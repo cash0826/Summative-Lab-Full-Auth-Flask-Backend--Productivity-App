@@ -8,7 +8,7 @@ from models.entries import Entry, EntrySchema
 entry_schema = EntrySchema()
 
 # Entries GET / POST / PATCH / DELETE
-class Entries(Resource):
+class Entries_Controller(Resource):
   
   # GET /entries
   def get(self):

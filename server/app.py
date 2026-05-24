@@ -2,7 +2,7 @@ from flask import request, session
 from flask_restful import Resource
 from config import app, api
 from controllers.auth import Signup, CheckSession, Login, Logout
-from controllers.entries import Entries
+from controllers.entries_controller import Entries_Controller as Entries
 
 @app.before_request
 def check_if_logged_in():

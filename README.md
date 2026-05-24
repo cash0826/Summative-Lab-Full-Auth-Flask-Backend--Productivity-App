@@ -3,12 +3,18 @@ This lab will follow a one-to-many relationship type, since users can be associa
 
 ## Foreword
 The front end was altered and developed enough to display Login, Signup and EntriesList.
-It does <u>not</u> currently have a flow to complete NewEntries and Updating a Journal Entry
-Additionally, I would have liked to include a profile image in the NavBar
 
-The backend is fully operational with a secure API that supports User Authentication and full CRUD operations
-The Entries routes are protected so only users can access their own data
-The Entries routes were tested with Postman (after sending a successful POST request to '/login')
+It does not currently have a flow to complete NewEntries and Updating a Journal Entry.
+
+Additionally, I would have liked to include a profile image in the NavBar.
+
+
+The backend is fully operational with a secure API that supports User Authentication and full CRUD operations.
+
+The Entries routes are protected so only users can access their own data.
+
+The Entries routes were tested with Postman (after sending a successful POST request to '/login').
+
 
 ## Installation
 
