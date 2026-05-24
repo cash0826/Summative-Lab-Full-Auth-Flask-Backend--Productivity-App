@@ -38,7 +38,7 @@ class User(db.Model):
   def authenticate(self, password):
     # check_password is doing a lot of heavy lifting here:
     # it generates a salt, appends it and validates it
-    return bcrypt.check_password(self._password_hash, password.encode('utf-8'))
+    return bcrypt.check_password_hash(self._password_hash, password.encode('utf-8'))
   
 class UserSchema(Schema):
   id = fields.Int()

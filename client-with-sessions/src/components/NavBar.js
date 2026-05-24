@@ -14,6 +14,7 @@ function NavBar({ user, setUser }) {
 
   return (
     <Wrapper>
+      <Img src={setUser.image_url} alt={setUser.image_url} />
       <Logo>
         <Link to="/">My App</Link>
       </Logo>
@@ -54,6 +55,13 @@ const Nav = styled.nav`
   gap: 4px;
   position: absolute;
   right: 8px;
+`;
+
+const Img = styled.img`
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  margin-right: 8px;
 `;
 
 export default NavBar;

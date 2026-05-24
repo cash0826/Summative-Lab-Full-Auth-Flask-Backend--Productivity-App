@@ -2,9 +2,10 @@ import React, { useState } from "react";
 import { Button, Error, Input, FormField, Label, Textarea } from "../styles";
 
 function SignUpForm({ onLogin }) {
-  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [passwordConfirmation, setPasswordConfirmation] = useState("");
+  const [imageUrl, setImageUrl] = useState("");
   const [errors, setErrors] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -18,9 +19,10 @@ function SignUpForm({ onLogin }) {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        username,
+        email,
         password,
-        password_confirmation: passwordConfirmation
+        password_confirmation: passwordConfirmation,
+        image_url: imageUrl,
       }),
     }).then((r) => {
       setIsLoading(false);
@@ -35,13 +37,13 @@ function SignUpForm({ onLogin }) {
   return (
     <form onSubmit={handleSubmit}>
       <FormField>
-        <Label htmlFor="username">Username</Label>
+        <Label htmlFor="email">Email</Label>
         <Input
           type="text"
-          id="username"
+          id="email"
           autoComplete="off"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
         />
       </FormField>
       <FormField>
@@ -64,6 +66,15 @@ function SignUpForm({ onLogin }) {
           autoComplete="current-password"
         />
       </FormField>
+      <FormField>
+        <Label htmlFor="imageUrl">Profile Image</Label>
+        <Input
+          type="text"
+          id="imageUrl"
+          value={imageUrl}
+          onChange={(e) => setImageUrl(e.target.value)}
+        />
+      </FormField>      
       <FormField>
         <Button type="submit">{isLoading ? "Loading..." : "Sign Up"}</Button>
       </FormField>
