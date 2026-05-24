@@ -17,14 +17,14 @@ with app.app_context():
   
   seeded_users = []
   
-  admin = User(email="admin@journalentries.com",
+  admin = User(email="admin@email.com",
                image_url="https://preview.redd.it/i-bought-a-tie-for-our-cat-so-he-would-fit-in-better-at-our-v0-sn6p92gm6jt01.jpg?auto=webp&s=2e76ace1637e33bded98bb8535f9898e4fadfadd")
-  me = User(email="melanie@journalentries.com", 
+  me = User(email="melanie@email.com", 
             image_url="https://media.licdn.com/dms/image/v2/D4E03AQGt_3oMjXhXeA/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1718269730908?e=1781136000&v=beta&t=1Ipz6MwBK7657VUWgE2Zx42erzsFqYXzHAtwmMo8Ku0")
   
   admin.password_hash = 'adminpassword'
   seeded_users.append(admin)
-  me.password_hash = 'mepassword'
+  me.password_hash = 'melaniepassword'
   seeded_users.append(me)
   
   db.session.add_all(seeded_users)
