@@ -35,9 +35,11 @@ export FLASK_RUN_PORT=5555
 ```
 Use set instead of export if on Window OS
 
-To get create the database from the initial migration, run:
+To create and seed the database, run:
 
 ```bash
+flask db init
+flask db migrate -m "initial migration"
 flask db upgrade
 python seed.py
 ```
